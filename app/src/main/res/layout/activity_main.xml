@@ -36,7 +36,8 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginStart="4dp"
                 android:layout_weight="1"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:onClick="compClick"/>
 
         </LinearLayout>
 
@@ -105,19 +106,40 @@
             android:onClick="chooseImage"
             android:text="Choose image"/>
 
-        <!--<Button-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:onClick="compressImage"-->
-            <!--android:text="Compress image"/>-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="compressImageAL"
+            android:text="Compress image with AdvancedLuban"/>
 
         <!--<Button-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:layout_marginTop="8dp"-->
-            <!--android:onClick="customCompressImage"-->
-            <!--android:text="Custom compress"/>-->
+            <!--android:onClick="compressImageL"-->
+            <!--android:text="Compress image with Luban"/>-->
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="compressImageSili"
+            android:text="Compress image with SiliCompressor"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="compressImageC"
+            android:text="Compress image with Compressor"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:onClick="compressImageLT"
+            android:text="Compress image with LT"/>
 
     </LinearLayout>
 </ScrollView>
