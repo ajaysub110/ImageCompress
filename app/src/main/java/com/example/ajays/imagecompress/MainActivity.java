@@ -29,11 +29,11 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 import id.zelory.compressor.Compressor;
-//import me.shaohui.advancedluban.Luban;
-//import me.shaohui.advancedluban.OnCompressListener;
-import top.zibin.luban.CompressionPredicate;
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
+import me.shaohui.advancedluban.Luban;
+import me.shaohui.advancedluban.OnCompressListener;
+//import top.zibin.luban.CompressionPredicate;
+//import top.zibin.luban.Luban;
+//import top.zibin.luban.OnCompressListener;
 
 import static android.os.Environment.getExternalStoragePublicDirectory;
 
@@ -70,70 +70,70 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
-//    public void compressImageAL(View view){
-//        if (actualImage == null){
-//            showError("Please choose an image!");
-//        } else {
-//
-//            Luban.compress(MainActivity.this,actualImage)
-//                    .putGear(Luban.CUSTOM_GEAR)
-//                    .setMaxSize(650)
-//                    .setCompressFormat(Bitmap.CompressFormat.JPEG)
-//                    .launch(new OnCompressListener() {
-//                        @Override
-//                        public void onStart() {
-//                            tStart = System.currentTimeMillis();
-//                        }
-//
-//                        @Override
-//                        public void onSuccess(File file) {
-//                            compressedImage = file;
-////                            tEnd = System.currentTimeMillis();
-//                            setCompressedImage();
-//                        }
-//
-//                        @Override
-//                        public void onError(Throwable e) {
-//
-//                        }
-//                    });
-//        }
-//    }
-
     public void compressImageAL(View view){
         if (actualImage == null){
             showError("Please choose an image!");
         } else {
-            tStart = System.currentTimeMillis();
-            Luban.with(this)
-                    .load(actualImage)
-                    .ignoreBy(80)
-                    .setFocusAlpha(false)
-                    .putGear(5)
-                    .setTargetDir(getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).
-                            getAbsolutePath())
-                    .filter(new CompressionPredicate() {
+
+            Luban.compress(MainActivity.this,actualImage)
+                    .putGear(Luban.FIRST_GEAR)
+//                    .setMaxSize(650)
+                    .setCompressFormat(Bitmap.CompressFormat.JPEG)
+                    .launch(new OnCompressListener() {
                         @Override
-                        public boolean apply(String path) {
-                            return !(TextUtils.isEmpty(path) || path.toLowerCase().endsWith(".gif"));
+                        public void onStart() {
+                            tStart = System.currentTimeMillis();
                         }
-                    })
-                    .setCompressListener(new OnCompressListener() {
-                        @Override
-                        public void onStart() { }
 
                         @Override
                         public void onSuccess(File file) {
                             compressedImage = file;
-                            tEnd = System.currentTimeMillis();
+//                            tEnd = System.currentTimeMillis();
                             setCompressedImage();
                         }
 
                         @Override
-                        public void onError(Throwable e) { }
-                    }).launch();
+                        public void onError(Throwable e) {
+
+                        }
+                    });
         }
     }
+
+//    public void compressImageAL(View view){
+//        if (actualImage == null){
+//            showError("Please choose an image!");
+//        } else {
+//            tStart = System.currentTimeMillis();
+//            Luban.with(this)
+//                    .load(actualImage)
+//                    .ignoreBy(80)
+//                    .setFocusAlpha(false)
+//                    .putGear(5)
+//                    .setTargetDir(getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).
+//                            getAbsolutePath())
+//                    .filter(new CompressionPredicate() {
+//                        @Override
+//                        public boolean apply(String path) {
+//                            return !(TextUtils.isEmpty(path) || path.toLowerCase().endsWith(".gif"));
+//                        }
+//                    })
+//                    .setCompressListener(new OnCompressListener() {
+//                        @Override
+//                        public void onStart() { }
+//
+//                        @Override
+//                        public void onSuccess(File file) {
+//                            compressedImage = file;
+//                            tEnd = System.currentTimeMillis();
+//                            setCompressedImage();
+//                        }
+//
+//                        @Override
+//                        public void onError(Throwable e) { }
+//                    }).launch();
+//        }
+//    }
 
     public void compressImageSili(View view) throws IOException {
         if (actualImage == null) {
